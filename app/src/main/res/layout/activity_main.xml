@@ -9,36 +9,39 @@
 
     <ImageView
         android:id="@+id/loginLogo"
-        android:layout_marginTop="50dp"
         android:layout_width="350dp"
         android:layout_height="250dp"
-        android:src="@drawable/logo"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/Login"
-        android:text="Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginLogo"
-        android:layout_margin="75dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/button_round_border"
         android:onClick="Login"
-        android:textColor="#ffff"
         android:padding="10dp"
-        android:background="@drawable/button_round_border"/>
+        android:text="Login"
+        android:textColor="#ffff" />
 
     <Button
         android:id="@+id/SignUp"
-        android:text="Sign Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginLogo"
-        android:layout_toRightOf="@id/Login"
         android:layout_marginTop="75dp"
+        android:layout_toRightOf="@id/Login"
+        android:background="@drawable/button_round_border"
         android:onClick="SignUp"
-        android:textColor="#ffff"
         android:padding="10dp"
-        android:background="@drawable/button_round_border"/>
+        android:text="Sign Up"
+        android:textColor="#ffff" />
 
     <Button
         android:layout_below="@id/Login"
@@ -53,16 +56,16 @@
         android:textColor="#ffff" />
 
     <Button
-        android:layout_below="@id/Login"
-        android:layout_toRightOf="@id/AdminLogin"
         android:id="@+id/SearchLogin"
-        android:text="Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Login"
         android:layout_marginLeft="75dp"
+        android:layout_toRightOf="@id/AdminLogin"
+        android:background="@drawable/button_round_border"
         android:onClick="searched"
-        android:textColor="#ffff"
         android:padding="10dp"
-        android:background="@drawable/button_round_border"/>
+        android:text="Search"
+        android:textColor="#ffff" />
 
 </RelativeLayout>

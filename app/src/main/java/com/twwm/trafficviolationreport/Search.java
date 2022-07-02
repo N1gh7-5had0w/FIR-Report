@@ -62,10 +62,10 @@ public class Search extends AppCompatActivity {
 
                         if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals(document.getString("emailId"))) {
 
-                            threadMap.put(count,document.getString("Vehicle Number"));
+                            threadMap.put(count,document.getString("Location"));
                             threadNames.add(threadMap.get(count));
                             threadTime.add(document.getString("TimeStamp"));
-                            threadLocation.add("Latitude: \n" + document.getString("Latitude") + " " + "\nLongitude: \n" + document.getString("Longitude"));
+//                            threadLocation.add("Latitude: \n" + document.getString("Latitude") + " " + "\nLongitude: \n" + document.getString("Longitude"));
                             threadLink.add(document.getString("Link"));
                             threadId.add(document.getString("emailId"));
                             arrayAdapter.notifyDataSetChanged();

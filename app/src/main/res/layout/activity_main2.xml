@@ -14,14 +14,14 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/report"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report"
             android:layout_centerInParent="true"
-            android:id="@+id/report"
             android:background="@drawable/button_round_borderer"
             android:onClick="report"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:text="Report" />
 
     </RelativeLayout>
 
@@ -31,14 +31,14 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Entries"
             android:layout_centerInParent="true"
-            android:id="@+id/search"
             android:background="@drawable/button_round_borderer"
             android:onClick="search"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:text="My Entries" />
 
     </RelativeLayout>
 
@@ -47,15 +47,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Approvals"
-            android:layout_centerInParent="true"
-            android:id="@+id/searchApproved"
-            android:background="@drawable/button_round_borderer"
-            android:onClick="searchApprove"
-            android:padding="10dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/searchApproved"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:background="@drawable/button_round_borderer"-->
+<!--            android:onClick="searchApprove"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="My Approvals" />-->
 
     </RelativeLayout>
 

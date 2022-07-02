@@ -58,8 +58,10 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
 
     private Button photo;
     private Button submit;
-    private EditText number;
-    private Spinner spinner;
+    private EditText location;
+    private EditText desc;
+    private EditText date;
+    private EditText time;
 
     private ArrayList<String> types;
 
@@ -78,8 +80,10 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
 
         photo = findViewById(R.id.photo);
         submit = findViewById(R.id.submit);
-        number = findViewById(R.id.number);
-        spinner = findViewById(R.id.spinner);
+        location = findViewById(R.id.location);
+        desc = findViewById(R.id.desc);
+//        date = findViewById(R.id.cdate);
+//        time = findViewById(R.id.ctime);
 
         types = new ArrayList<>();
 
@@ -95,7 +99,7 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
                         types.add(document.getString("Name"));
                     }
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(InfoActivity.this, android.R.layout.simple_spinner_dropdown_item, types);
-                    spinner.setAdapter(adapter);
+//                    spinner.setAdapter(adapter);
 
                 }
 
@@ -123,21 +127,21 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
             public void onClick(View v) {
 
                 if(photoLink != null) {
-                    if (check(number.getText().toString())) {
-                        Integer indexValue = spinner.getSelectedItemPosition();
-                        typeStr = types.get(indexValue);
+                    if (check(location.getText().toString())) {
+//                        Integer indexValue = spinner.getSelectedItemPosition();
+//                        typeStr = types.get(indexValue);
 
                         data.put("Latitude", Lati);
                         data.put("Longitude", Longi);
-                        data.put("Vehicle Number", number.getText().toString());
+                        data.put("Location",location.getText().toString());
                         data.put("emailId", FirebaseAuth.getInstance().getCurrentUser().getEmail());
                         data.put("TimeStamp", getCurrentTimeStamp());
                         data.put("Link", photoLink);
-                        data.put("Type", typeStr);
-                        db.collection("Events").document(FirebaseAuth.getInstance().getCurrentUser().getEmail() + number.getText().toString() + getCurrentTimeStamp()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        data.put("Desc", desc.getText().toString());
+                        db.collection("Events").document(FirebaseAuth.getInstance().getCurrentUser().getEmail() + location.getText().toString() + getCurrentTimeStamp()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(InfoActivity.this, "Complaint Taken", Toast.LENGTH_LONG).show();
+                                Toast.makeText(InfoActivity.this, " FIR Complaint Registered", Toast.LENGTH_LONG).show();
                             }
                         }).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -175,21 +179,21 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
                                                             int which)
                                         {
 
-                                            if (check(number.getText().toString())) {
-                                                Integer indexValue = spinner.getSelectedItemPosition();
-                                                typeStr = types.get(indexValue);
+                                            if (check(location.getText().toString())) {
+//                                                Integer indexValue = spinner.getSelectedItemPosition();
+//                                                typeStr = types.get(indexValue);
 
                                                 data.put("Latitude", Lati);
                                                 data.put("Longitude", Longi);
-                                                data.put("Vehicle Number", number.getText().toString());
+                                                data.put("Location", location.getText().toString());
                                                 data.put("emailId", FirebaseAuth.getInstance().getCurrentUser().getEmail());
                                                 data.put("TimeStamp", getCurrentTimeStamp());
                                                 data.put("Link", photoLink);
-                                                data.put("Type", typeStr);
-                                                db.collection("Events").document(FirebaseAuth.getInstance().getCurrentUser().getEmail() + number.getText().toString() + getCurrentTimeStamp()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                data.put("Desc", desc.getText().toString());
+                                                db.collection("Events").document(FirebaseAuth.getInstance().getCurrentUser().getEmail() + location.getText().toString() + getCurrentTimeStamp()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(InfoActivity.this, "Complaint Taken", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(InfoActivity.this, "FIR Complaint registered successfully", Toast.LENGTH_LONG).show();
                                                     }
                                                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -207,7 +211,7 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
 
                                             } else {
 
-                                                Toast.makeText(InfoActivity.this, "Please Enter Valid Number", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(InfoActivity.this, "Please Enter Valid Location", Toast.LENGTH_LONG).show();
 
                                             }
 
@@ -237,29 +241,30 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
 
     static boolean check(String num)
     {
-        boolean numeric = true;
-        boolean string = false;
-        try {
-            int number = Integer.parseInt(num.substring(2,4));
-        }
-        catch (NumberFormatException e) {
-            numeric = false;
-        }
-        try {
-            int number = Integer.parseInt(num.substring(0,2).toUpperCase());
-        }
-        catch (NumberFormatException e)
-        {
-            string = true;
-        }
-        if(numeric==true && string==true && (num.charAt(0)>64 && num.charAt(0)<91) && (num.charAt(1)>64 && num.charAt(1)<91))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
+//        boolean numeric = true;
+//        boolean string = false;
+//        try {
+//            int number = Integer.parseInt(num.substring(2,4));
+//        }
+//        catch (NumberFormatException e) {
+//            numeric = false;
+//        }
+//        try {
+//            int number = Integer.parseInt(num.substring(0,2).toUpperCase());
+//        }
+//        catch (NumberFormatException e)
+//        {
+//            string = true;
+//        }
+//        if(numeric==true && string==true && (num.charAt(0)>64 && num.charAt(0)<91) && (num.charAt(1)>64 && num.charAt(1)<91))
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
     }
 
     @Override
@@ -331,7 +336,7 @@ public class InfoActivity extends AppCompatActivity implements LocationListener 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
 
-            final StorageReference mountainsRef = FirebaseStorage.getInstance().getReference().child(number.getText().toString() + "/" + getCurrentTimeStamp() +".jpg");
+            final StorageReference mountainsRef = FirebaseStorage.getInstance().getReference().child(location.getText().toString() + "/" + getCurrentTimeStamp() +".jpg");
 
             Bitmap bitmapNo = (Bitmap) data.getExtras().get("data");
             Bitmap bitmap = scaleBitmapAndKeepRation(bitmapNo, 40,40);
